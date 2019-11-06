@@ -12,6 +12,6 @@ source venv/bin/activate
 ``` 
 
 
-1. Install the needed dependencies with `pip install -r requirements.txt`
-2. Start the server with `python server.py`
+1. Install the needed dependencies with `pip3 install -r requirements.txt`
+2. Start the server with `python3 server.py`
 3. Try calling [http://localhost:3010/test-api/test-type/<test_id>](http://localhost:3010/)
