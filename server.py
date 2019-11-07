@@ -1,16 +1,12 @@
 #
-# ATD - CR3 Download API
-#
-
 
 import re
 import datetime
 from os import environ as env
 from flask import Flask, request, redirect, jsonify
+from imagerec import palm_check
 
 APP = Flask(__name__)
-
-
 
 
 # Controllers API
@@ -23,16 +19,13 @@ def healthcheck():
     return jsonify(message=response)
 
 
-@APP.route("/test-api/DID/<test_id>")
-def download_test_id(test_id):
+@APP.route("/test-api/bio/<filename>")
+def bio_test_id(filename):
     """A valid access token is required to access this route
     """
-    # We only care for an integer string, anything else is not safe:
-    safe_test_id = re.sub("[^0-9]", "", test_id)
+    result = palm_check(filename)
 
-    math = int(safe_test_id) +1
-
-    return jsonify(message=math)
+    return jsonify(message=result)
 
 
 if __name__ == "__main__":
